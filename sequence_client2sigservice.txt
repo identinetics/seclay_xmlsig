@@ -1,0 +1,11 @@
+source text for https://www.websequencediagrams.com
+
+title Request Signature via Front Channel (Browser)
+
+Browser->client_service: GET /
+client_service->Browser: 200 text/html; form with XMLRequest + autoloading Javascript
+Browser->sig_service: XMLHTTP-Request XMLRequest=CreateXMLSignatureRequest
+sig_service-> Browser: 200 with <CreateXMLSignatureResponse>
+Browser->client_service: XMLHTTP-Request POST sig_response=CreateXMLSignatureResponse>
+client_service->Browser: 200 text/html confirmation page
+Browser->Browser: document.write(http.responseText)
